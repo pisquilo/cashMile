@@ -9,4 +9,4 @@ COPY project.clj /usr/src/app/
 RUN lein deps
 
 # By default start a REPL
-CMD ["lein", "repl"]
+CMD ["bash"]
