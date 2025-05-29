@@ -1,3 +1,7 @@
 docker build -t cash_mile .
 
-docker run -it --rm --name cash_mile_runnig -e DUFFEL_API_KEY="$(cat duffel_api_key)" -v "$(pwd)/src:/usr/src/app/src" cash_mile
+docker run -it --rm --name cash_mile_runnig -e DUFFEL_API_KEY="$(cat duffel_api_key)" -v "$(pwd)/src:/usr/src/app/src" -p 3000:3000 cash_mile
+
+http://localhost:3000/cash-flight-offers?trips[origin]=LHR&trips[origin]=MUC&trips[destination]=JFK&trips[departure_date]=2025-06-01&passengers[family_name]=Doe&passengers[given_name]=John&passengers[age]=30&passengers[family_name]=Pedro&passengers[given_name]=Ferreira&passengers[age]=27&cabin_class=business&max_connections=1
+
+http://localhost:3000/cash-flight-offers?trips[origin]=LHR&trips[destination]=MUC&trips[departure_date]=2025-06-01&passengers[family_name]=Pedro&passengers[given_name]=Ferreira&passengers[age]=27&cabin_class=business&max_connections=1

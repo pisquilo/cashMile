@@ -1,4 +1,4 @@
-(ns cashMile.duffel
+(ns cash-mile.duffel
   (:require [clj-http.client :as client]
             [cheshire.core :as cheshire]))
 
@@ -41,12 +41,13 @@
       (println "Response body:" (:body response)))
     response))
 
-(defn get-flight-offers [slices passengers max-connections cabin-class]
+(defn get-flight-offers [request]
   (let [endpoint "air/offer_requests"
         payload (cheshire/generate-string
                  {:data
-                  {:slices (vec slices)
-                   :passengers (vec passengers)
-                   :max-connections max-connections
-                   :cabin-class cabin-class}})]
-    (call-duffel-api endpoint payload)))
+                  {:slices (get-slices (:trips request))
+                   :passengers (get-passengers (:passengers request))
+                   :max_connections (:max-connections request)
+                   :cabin_class (:cabin-class request)}})
+        duffel-response (call-duffel-api endpoint payload)]
+    duffel-response))
