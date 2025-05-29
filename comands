@@ -1,0 +1,3 @@
+docker build -t cash_mile .
+
+docker run -it --rm --name cash_mile_runnig -e DUFFEL_API_KEY="$(cat duffel_api_key)" -v "$(pwd)/src:/usr/src/app/src" cash_mile
