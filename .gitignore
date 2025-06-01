@@ -1,3 +1,8 @@
-duffel_api_key
+*.env
 .clj-kondo/*
 .vscode/*
+.calva/*
+target/*
+.lsp/*
+.nrepl-port
+.lein-failures

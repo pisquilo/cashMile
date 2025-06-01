@@ -1,0 +1,26 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/docker-existing-dockerfile
+{
+	"name": "cashMile",
+	"build": {
+		"dockerfile": "../Dockerfile"
+		},
+	// Configure tool-specific properties.
+	"customizations": {
+		"vscode": {
+			// Add the IDs of extensions you want installed when the container is created.
+			"extensions": [
+				"vscjava.vscode-java-pack",
+				"betterthantomorrow.calva"
+			]
+		}
+	},
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	"forwardPorts": [8088, 52162, 3000],
+
+	// Use 'postCreateCommand' to run commands after the container is created.
+	"postStartCommand": "lein test",
+
+	// Adding Environemnt Variables
+	"runArgs": ["--env-file",".devcontainer/devcontainer.env", "--name", "cashMile-devcontainer"]
+}
